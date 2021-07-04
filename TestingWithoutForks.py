@@ -52,96 +52,11 @@ def Print_Grid(Grid): #print the grid
 
 
 def Is_A_Winning_Move(Value, Row, Col, Grid): #check winning move
-  if Row == 0:
-    if Col == 0: #top left
-      if Grid[Row][Col+1] == Value and Grid[Row][Col+1] == Grid[Row][Col+2]: #top row
-        return True
-        
-      if Grid[Row+1][Col] == Value and Grid[Row+1][Col] == Grid[Row+2][Col]: #left column
-        return True
-      
-      if Grid[Row+1][Col+1] == Value and Grid[Row+1][Col+1] == Grid[Row+2][Col+2]: #diagonal from left to right
-        return True
-    
-    elif Col == 1: #top middle
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col+1]: #top row
-        return True 
-        
-      if Grid[Row+1][Col] == Value and Grid[Row+1][Col] == Grid[Row+2][Col]: #middle column
-        return True
-    
-    
-    elif Col == 2: #top right
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col-2]: #top row
-        return True
-        
-      if Grid[Row+1][Col] == Value and Grid[Row+1][Col] == Grid[Row+2][Col]: #right column
-        return True
-      
-      if Grid[Row+1][Col-1] == Value and Grid[Row+1][Col-1] == Grid[Row+2][Col-2]: #diagonal from right to left
-        return True
+  temp = copy.deepcopy(Grid) #make a copy of Grid
   
+  temp[Row][Col] = Value #set temp's position as value
   
-  elif Row == 1:
-    if Col == 0: #middle left
-      if Grid[Row][Col+1] == Value and Grid[Row][Col+1] == Grid[Row][Col+2]: #middle row
-        return True
-        
-      if Grid[Row-1][Col] == Value and Grid[Row-1][Col] == Grid[Row+1][Col]: #left column
-        return True
-      
-    elif Col == 1: #CENTER
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col+1]: #middle row
-        return True 
-        
-      if Grid[Row+1][Col] == Value and Grid[Row+1][Col] == Grid[Row-1][Col]: #middle column
-        return True
-      
-      if Grid[Row-1][Col-1] == Value and Grid[Row-1][Col-1] == Grid[Row+1][Col+1]: #diagonal from left to right
-        return True 
-        
-      if Grid[Row-1][Col+1] == Value and Grid[Row-1][Col+1] == Grid[Row+1][Col-1]: #diagonal from right to left
-        return True
-    
-    
-    elif Col == 2: #middle right
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col-2]: #middle row
-        return True
-        
-      if Grid[Row-1][Col] == Value and Grid[Row-1][Col] == Grid[Row+1][Col]: #right column
-        return True
-        
-        
-  elif Row == 2:
-    if Col == 0: #bottom left
-      if Grid[Row][Col+1] == Value and Grid[Row][Col+1] == Grid[Row][Col+2]: #bottom row
-        return True
-        
-      if Grid[Row-1][Col] == Value and Grid[Row-1][Col] == Grid[Row-2][Col]: #left column
-        return True
-      
-      if Grid[Row-1][Col-1] == Value and Grid[Row-1][Col-1] == Grid[Row-2][Col-2]: #diagonal from right to left
-        return True
-    
-    elif Col == 1: #bottom middle
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col+1]: #bottom row
-        return True 
-        
-      if Grid[Row-1][Col] == Value and Grid[Row-1][Col] == Grid[Row-2][Col]: #middle column
-        return True
-    
-    
-    elif Col == 2: #bottom right
-      if Grid[Row][Col-1] == Value and Grid[Row][Col-1] == Grid[Row][Col-2]: #bottom row
-        return True
-        
-      if Grid[Row-1][Col] == Value and Grid[Row-1][Col] == Grid[Row-2][Col]: #right column
-        return True
-      
-      if Grid[Row-1][Col-1] == Value and Grid[Row-1][Col-1] == Grid[Row-2][Col-2]: #diagonal from left to right
-        return True
-  
-  return False #none of these, return False
+  return Check_Win(temp, Value) #check for wins, either return True or False
       
   
   
@@ -340,11 +255,6 @@ def Official():
   
 
 Official()
-  
-  
-  
-  
-  
   
   
   
