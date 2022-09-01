@@ -1,2 +1,2 @@
 # TicTacToe
-Tic Tac Toe implementation in Python, with and without AI (April 2021)
+Tic Tac Toe implementation in Python, with and without AI (March 2021)
